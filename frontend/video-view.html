@@ -78,6 +78,7 @@
   </div>
 
   <script>
+    const API_URL = 'https://amax-backend.onrender.com';
     const urlParams = new URLSearchParams(window.location.search);
     const historyId = urlParams.get('id');
 
@@ -88,7 +89,7 @@
       }
 
       try {
-        const response = await fetch(`/api/video-view/${historyId}`);
+        const response = await fetch(`${API_URL}/api/video-view/${historyId}`);
         if (!response.ok) throw new Error('Not found');
         
         const data = await response.json();
@@ -99,10 +100,10 @@
         document.getElementById('fileSize').textContent = data.fileSize;
         
         const videoPlayer = document.getElementById('videoPlayer');
-        videoPlayer.src = data.filePath;
+        videoPlayer.src = `${API_URL}${data.filePath}`;
         
         const downloadBtn = document.getElementById('downloadBtn');
-        downloadBtn.href = data.filePath;
+        downloadBtn.href = `${API_URL}${data.filePath}`;
         
         document.getElementById('loading').classList.add('hidden');
         document.getElementById('content').classList.remove('hidden');

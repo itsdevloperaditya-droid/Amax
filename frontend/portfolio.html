@@ -376,13 +376,15 @@
   </footer>
 
   <script>
+    const API_URL = 'https://amax-backend.onrender.com';
+
     // Function to create video card
     function createVideoCard(videoPath, index) {
       return `
-        <div class="portfolio-item group" data-type="video" data-path="${videoPath}">
+        <div class="portfolio-item group" data-type="video" data-path="${API_URL}/${videoPath}">
           <div class="loader-container"><div class="spinner"></div></div>
           <video muted preload="none" class="lazy-video" onloadeddata="this.parentElement.classList.add('loaded')" loop disableremoteplayback playsinline webkit-playsinline>
-            <source src="${videoPath}" type="video/mp4">
+            <source src="${API_URL}/${videoPath}" type="video/mp4">
           </video>
           <div class="overlay">
             <!-- Central icon removed as requested -->
@@ -397,9 +399,9 @@
     // Function to create thumbnail card
     function createThumbnailCard(thumbnailPath, index) {
       return `
-        <div class="portfolio-item group" data-type="image" data-path="${thumbnailPath}">
+        <div class="portfolio-item group" data-type="image" data-path="${API_URL}/${thumbnailPath}">
           <div class="loader-container"><div class="spinner"></div></div>
-          <img src="" data-src="${thumbnailPath}" alt="Thumbnail Design" class="lazy-img" onload="this.parentElement.classList.add('loaded')">
+          <img src="" data-src="${API_URL}/${thumbnailPath}" alt="Thumbnail Design" class="lazy-img" onload="this.parentElement.classList.add('loaded')">
           <div class="overlay">
             <div class="play-icon">
               <i class="fas fa-search-plus"></i>
@@ -417,7 +419,7 @@
       const thumbCount = document.getElementById('thumbCount');
       
       try {
-        const response = await fetch('/api/media');
+        const response = await fetch(`${API_URL}/api/media`);
         const data = await response.json();
         
         // Update counts
