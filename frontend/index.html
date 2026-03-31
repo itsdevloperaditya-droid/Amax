@@ -1025,18 +1025,20 @@ Join Amax_editor and grow your income 🚀</p>
 
 const API_URL = 'https://amax-backend.onrender.com';
 
-    // Form Submissions
-    document.getElementById('signupFormEl').addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const formData = new FormData(e.target);
-      const data = Object.fromEntries(formData.entries());
-      
-      try {
-        const response = await fetch(`${API_URL}/api/signup`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data)
-        });
+    const API_URL = 'https://amax-backend.onrender.com';
+
+        // Form Submissions
+        document.getElementById('signupFormEl').addEventListener('submit', async (e) => {
+          e.preventDefault();
+          const formData = new FormData(e.target);
+          const data = Object.fromEntries(formData.entries());
+
+          try {
+            const response = await fetch(`${API_URL}/api/signup`, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(data)
+            });
         const result = await response.json();
         if (response.ok) {
           showToast('Account created successfully! Please login.', 'success');
@@ -1048,14 +1050,16 @@ const API_URL = 'https://amax-backend.onrender.com';
         showToast('Server connection error. Please try again later.', 'error');
       }
     });
+const API_URL = 'https://amax-backend.onrender.com';
 
-    document.getElementById('loginFormEl').addEventListener('submit', async (e) => {
+    // Form Submissions
+    document.getElementById('signupFormEl').addEventListener('submit', async (e) => {
       e.preventDefault();
       const formData = new FormData(e.target);
       const data = Object.fromEntries(formData.entries());
-      
+
       try {
-        const response = await fetch(`${API_URL}/api/login`, {
+        const response = await fetch(`${API_URL}/api/signup`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(data)
