@@ -91,7 +91,6 @@
       setTimeout(() => { toast.classList.remove('show'); setTimeout(() => toast.remove(), 400); }, 4000);
     };
 
-    const API_URL = 'https://amax-backend.onrender.com';
     const adminAuthModal = document.getElementById('adminAuthModal');
     const dashboardContent = document.getElementById('dashboardContent');
     const userTableBody = document.getElementById('userTableBody');
@@ -106,7 +105,7 @@
       const password = document.getElementById('adminPass').value;
 
       try {
-        const response = await fetch(`${API_URL}/api/admin/login`, {
+        const response = await fetch('/api/admin/login', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ id, password })
@@ -137,7 +136,7 @@
 
     const loadUsers = async () => {
       try {
-        const response = await fetch(`${API_URL}/api/admin/users`);
+        const response = await fetch('/api/admin/users');
         const users = await response.json();
         userTableBody.innerHTML = '';
         users.forEach(user => {
